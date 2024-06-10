@@ -81,4 +81,18 @@ char	*get_next_line(int fd)
 		line = ft_strjoin(line, buf);
 	}
 	if (ft_strlen(line) == 0)
+        return (free(line), NULL);
+
+    if (newline != NULL)
+    {
+        to_copy = newline - line + 1;
+        ft_strcpy(buf, newline + 1);
+    }
+    else
+    {
+        to_copy = ft_strlen(line);
+        buf[0] = '\0';
+    }
+    line[to_copy] = '\0';
+    return (line);
 }
